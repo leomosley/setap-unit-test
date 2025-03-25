@@ -11,15 +11,18 @@ class mathmanager:
 	
 	def monthly_intrest(self, amount, period):
 		if period == 1:
-			rate = 1.038
+			rate = 0.038
 		elif period == 2:
-			rate = 1.036
+			rate = 0.036
 		else:
 			raise ValueError("Invalid period, must be 1 or 2 years")
 
-		return amount * (rate ** period)
+		return round(amount * (1 + (rate /12)) ** (12 * period), 2)
 
 	def tax(self, income):
+		if income < 0:
+			raise ValueError("Income must be a positive number")
+		
 		if income <= 12570:
 			rate = 0
 		elif income <= 50270:
