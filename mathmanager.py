@@ -10,6 +10,9 @@ class mathmanager:
 		return a*b
 	
 	def monthly_intrest(self, amount, period):
+		if amount < 0:
+			raise ValueError("Amount must be a positive number")
+		
 		if period == 1:
 			rate = 0.038
 		elif period == 2:

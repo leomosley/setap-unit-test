@@ -16,11 +16,14 @@ class mathmanagertest(unittest.TestCase):
 
 	def testMonthlyIntrest(self):
 		math = mathmanager()
+		self.assertRaises(ValueError, math.monthly_intrest, 1000, 0)
+		self.assertRaises(ValueError, math.monthly_intrest, -1000, 1)
 		self.assertEqual(math.monthly_intrest(1000, 1), 1038.67)
 		self.assertEqual(math.monthly_intrest(1000, 2), 1074.54)
 	
 	def testTax(self):
 		math = mathmanager()
+		self.assertRaises(ValueError, math.tax, -1000)		
 		self.assertEqual(math.tax(12570), 0)
 		self.assertEqual(math.tax(50270), 10054)
 		self.assertEqual(math.tax(125140), 50056)
